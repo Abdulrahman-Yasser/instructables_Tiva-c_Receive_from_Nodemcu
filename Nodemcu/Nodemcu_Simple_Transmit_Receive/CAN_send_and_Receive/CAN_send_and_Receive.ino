@@ -27,7 +27,8 @@ void setup()
 
 }
 byte i = 0;
-byte data[8] = {1, 1, 1, 1, 1, 1, 1, 1};
+byte data_1[8] = {1, 1, 1, 1, 1, 1, 1, 1};
+byte data_0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
 void loop()
 {
@@ -35,21 +36,22 @@ void loop()
   byte i;
   for(i = 0; i < 6; i++){
     // send data:  ID = 0x100, Standard CAN Frame, Data length = 8 bytes, 'data' = array of data bytes to send
-    sndStat = CAN0.sendMsgBuf(0x23 | 0x40000000, 8, data);
+    sndStat = CAN0.sendMsgBuf(0x23, 8, data_1);
 
     if(sndStat == CAN_OK){
       Serial.println("Message Sent Successfully and received !");
     } else {
       Serial.println("Error Sending Message...");
     }
-    data[0] = i++;
-    data[1] = i++;
-    data[2] = i++;
-    data[3] = i++;
-    data[4] = i++;
-    data[5] = i++;
-    data[6] = i++;
-    data[7] = i++;
+    delay(500);   // send data per 100ms
+    // send data:  ID = 0x100, Standard CAN Frame, Data length = 8 bytes, 'data' = array of data bytes to send
+    sndStat = CAN0.sendMsgBuf(0x23, 8, data_0);
+
+    if(sndStat == CAN_OK){
+      Serial.println("Message Sent Successfully and received !");
+    } else {
+      Serial.println("Error Sending Message...");
+    }
     delay(500);   // send data per 100ms
   }
 

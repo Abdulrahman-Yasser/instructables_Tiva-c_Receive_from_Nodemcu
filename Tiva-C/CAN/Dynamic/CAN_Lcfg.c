@@ -28,19 +28,19 @@ CANConfigMsgs_t CANMsgConfigs[] = {
                                        {
                                         .CAN_Base = CAN0_BASE_e,
                                         .Msg_ID = 6,
-                                        .flags = MSG_OBJ_TYPE_RX_REMOTE,
+                                        .flags = MSG_OBJ_TYPE_TX,
                                         .Msg =
                                         {
                                         .ui32MsgID = 0x33,
                                         .ui32MsgIDMask = 0xff,
                                         .ui32MsgLen = 8,
-                                        .ui32Flags = MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER
+                                        .ui32Flags = MSG_OBJ_TX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER
                                         }
                                        },
                                         {
                                          .CAN_Base = CAN0_BASE_e,
                                          .Msg_ID = 7,
-                                         .flags = MSG_OBJ_TYPE_RXTX_REMOTE,
+                                         .flags = MSG_OBJ_TYPE_RX,
                                          .Msg =
                                          {
                                          .ui32MsgID = 0x23,
@@ -48,19 +48,7 @@ CANConfigMsgs_t CANMsgConfigs[] = {
                                          .ui32MsgLen = 8,
                                          .ui32Flags = MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER
                                          }
-                                       },
-                                       {
-                                        .CAN_Base = CAN0_BASE_e,
-                                        .Msg_ID = 8,
-                                        .flags = MSG_OBJ_TYPE_TX,
-                                        .Msg =
-                                        {
-                                        .ui32MsgID = 0x33,
-                                        .ui32MsgIDMask = 0xff,
-                                        .ui32MsgLen = 8,
-                                        .ui32Flags = MSG_OBJ_TX_INT_ENABLE
-                                        }
-                                      }
+                                       }
 };
 
 CANConfigMsgs_t* CAN_getMsgConfig(void){

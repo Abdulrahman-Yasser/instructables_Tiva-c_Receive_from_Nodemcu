@@ -38,6 +38,7 @@ int main(void)
 
     uint8_t my_Rx_Data[8] = {2, 2, 2, 2, 2, 2, 2, 2};
     RxMsg.pui8MsgData = my_Rx_Data;
+
     SystemInit();
 
     CAN_my_Init(CAN_getConfig());
@@ -69,7 +70,7 @@ int main(void)
                 GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0);
                 GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
                 GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0);
-            }else if(RxMsg.pui8MsgData[0] == 0){
+            }else if(RxMsg.pui8MsgData[0] == 1){
                 GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
                 GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
                 GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0);
@@ -124,11 +125,13 @@ void GPIOFIntHandler(void)
     /*check if interrupt is by SW1*/
     if (GPIOIntStatus(GPIO_PORTF_BASE,0) & GPIO_PIN_4)
     {
+        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);
         g_bTransmitNow = true;
     }
     /* check if interrupt causes by PF0/SW2 */
     else if (GPIOIntStatus(GPIO_PORTF_BASE,0) & GPIO_PIN_0)
     {
+        GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);
         g_bTransmitNow = true;
     }
     else
