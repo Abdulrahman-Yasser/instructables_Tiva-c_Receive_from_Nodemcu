@@ -1,5 +1,10 @@
 # instructables_Tiva-c_Receive_from_Nodemcu
 The project is a CAN bus communication between Nodemcu and Tiva-C. This repo contains the code for Instructables's project link
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@abdu.ya74/can-bus-communication-7589402276bd)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=lWWCg1qRbLw)
+[(instructables)](https://www.youtube.com/watch?v=lWWCg1qRbLw)
+
+
 ## Description :
 - Tiva-C wired with mcp2551.
 - Nodemcu wired with mcp2515.
